@@ -1,0 +1,63 @@
+@mixin svg-container-resize{
+  display: flex;
+  // position: relative;
+  width: 100%;
+  // vertical-align: top;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@mixin svg-content-resize {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#svg-container{
+  @include svg-container-resize;
+  grid-area: chart;
+  align-items: center;
+  box-sizing: border-box;
+
+  svg {
+    // grid-area: chart;
+    // justify-content: center;
+    box-sizing: border-box;
+    // margin: 2%;
+    margin: 2.5%;
+    height: 90%;
+    width: 90%;
+    // shape-rendering: crispEdges;
+    @include svg-content-resize;
+
+    .line {
+      stroke: lightgray;
+      fill: none;
+    }
+
+    .dot {
+      fill: turquoise;
+      shape-rendering: auto;
+    }
+
+    .axis{
+      path {
+        stroke: lightgray;
+      }
+
+      g.tick{
+        line {
+          stroke: lightgray;
+        }
+        text {
+          fill: orange;
+          font-size: 1.3em;
+          font-weight: bolder;
+        }
+
+      }
+
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Numans|Nunito+Sans');
+
+body {
+  font-family:'Nunito Sans', sans-serif;
+  max-height: 100vh;
+  display: grid;
+  grid-template-rows: 0.8fr 0.5fr 7fr;
+  grid-gap: 0;
+  margin: 0;
+  grid-template-areas: "title" "searchbox" "chart";
+  color: orange;
+}
+
+h1 {
+  grid-area: title;
+  font-family: 'Numans', sans-serif;
+  text-align: center;
+  align-content: center;
+}
+
+form {
+  grid-area: searchbox;
+  text-align: center;
+
+  input {
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 5px;
+
+    &#query-input {
+      border: solid 1px orange;
+      color: lightgray;
+    }
+
+    &#submit {
+      background: orange;
+      color: white;
+      border: 0;
+    }
+  }
+
+  button {
+    background: orange;
+    color: white;
+    border: 0;
+    height: 75%;
+    padding: 5px;
+  }
+
+}
+
+#svg-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  svg {
+    grid-area: chart;
+    justify-content: center;
+    box-sizing: border-box;
+    // margin: 2%;
+    margin: 2.5%;
+    height: 90%;
+    width: 90%;
+    // shape-rendering: crispEdges;
+    // @include svg-content-resize;
+
+    .line {
+      stroke: turquoise;
+      fill: none;
+    }
+
+    .dot {
+      fill: turquoise;
+      shape-rendering: auto;
+    }
+
+    .axis{
+      path {
+        stroke: lightgray;
+      }
+
+      g.tick{
+        line {
+          stroke: lightgray;
+        }
+        text {
+          fill: orange;
+          font-size: 1.3em;
+          font-weight: bolder;
+        }
+
+      }
+
+    }
+  }}
+
+// ANIMATIONS
+@keyframes headshake {
+  0 {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translate(-5px);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  75% {
+    transform: translateX(3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.headshake {
+  animation-duration: 0.2s;
+  animation-timing-function: cubic-bezier(.56,.29,.56,1);
+  animation-name: headshake;
+  animation-iteration-count:2;
+}
+
+// #root {
+//   grid-area: chart;
+//
+//   svg{
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
